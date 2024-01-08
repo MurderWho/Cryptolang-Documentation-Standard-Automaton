@@ -1,4 +1,4 @@
-This project is a quick python GUI implementing the Cryptolang Documentation Standard created by DaCracyWorldBuilder, reddit account at: https://www.reddit.com/user/DaCrazyWorldbuilder
+This project is a quick python GUI implementing the Cryptolang Documentation Standard created by DaCrazyWorldBuilder, reddit account at: https://www.reddit.com/user/DaCrazyWorldbuilder
 See the help file for links to the original reddit posts describing the CDS, and more details about the implementation
 
 The original form of the project was almost solely a series of a RegEx matches, but now it's a more complex mess, much of which simply reimplements elements of RegEx. 
