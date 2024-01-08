@@ -1,0 +1,491 @@
+******************************************************
+****************Table of Contents*********************
+******************************************************
+
+1. Opening
+2. Crytoland Documentation Standard
+3. Main functions
+3a. Reserved Characters
+4. Using the sidebar
+4a. Square Bracket Codes
+4b. Diacritics
+5. The status window and debugging your ruletext
+6. The Generate button
+7. Changelog
+
+******************************************************
+*********************Opening**************************
+******************************************************
+
+This application automates the encrypting of plaintexts with ruletexts as described in:
+
+https://www.reddit.com/r/cryptolangs/comments/upc4jr/good_time_of_the_day_and_lets_begin_the/
+https://www.reddit.com/r/cryptolangs/comments/xe9j8f/updates_on_the_cds_cryptolang_documentation/
+
+The original version was made by Murder Who on Dec 17th and 18th of 2023 and released under the "Do whatever the fuck you want" copyright license.
+(Please note that many things do not require copyright protections to pursue, such as plagarism and fraud)
+
+
+The posts are replicated here for archival purposes:
+
+******************************************************
+******Cryptolang Documentation Standard***************
+******************************************************
+
+(By DaCrazyWorldbuilder)
+
+During my time as a cryptolanger (roughly seven years by the time of creating this post) I've made a simple way of creating cryptolang documentations. But first, let's clear some things out:
+
+- There are two kinds of cryptolans, two main kinds: Replacement and Alteration. The first one replaces every letter or morpheme by some other morpheme using "circular groups" or "replacement rows" about which I will talk about later; The second one usually alterates the way some word is written, using anagrams, addition or deletion of letters.
+
+- I am the inventor of cryptolangs and it's my current way of how I document them.
+
+So, first about the Replacement Cryptolangs:
+
+Above I mentioned "circular groups" and "replacement rows". What is this?
+You must know about ROT1, the cipher every kid used in school (or at least so I believe) to send secret messages in some sort of mystery club/gang. The point is, you move every letter of the English alphabet to the right to encode it, thus A=>B; At the end of the alphabet, it loops back and allows Z=>A.
+
+And that's the main principle: in Replacement cryptolangs, the letters are written in some order and then shifted one time to the right, for example:
+
+AEIOU
+
+In this case, A=>E, E=>I ... U=>A. Thi ind risalt mast luuk loki thos.
+
+But then come the two main rules for cryptolangs:
+
+    Replace letters with letters of according kind. Vowels with vowels, consonants with consonants.
+    Remember about difficult morphemes and digraphs/polygraphs in general and replace them accordingly.
+
+How to replace more than one letter with another structure? Say, I want every SH to become JA.
+
+You can get the wanted result using this way of writing it down:
+
+ShJa
+
+Note the usage of both capital and small letters, every capital one refers to a beginning of a new morpheme, even when it's one letter long. Thus you can even manage to replace, say, the letter Y with a whole ass Andevielond. And andevielondou wouldn't want to do it much, but still it's a good option.
+
+But hey, if ShJa is written like this, it means that every JA will become SH, right? And not that I don't like some shm but it just sounds wrong. So here it comes: the Hashtag.
+
+ShJa#
+
+It shows us that the group is not circular, but a row one. SH becomes JA and JA doesn't change anyhow.
+
+Next, the Underline (_). It separates different groups and allows the cryptolanger to write down long strings of rules. For example:
+
+AAe_EIOUYAla_QAck#_SZWH#_LMNT
+
+Lhyz lhi rizyml homm muuk moki lhoz.
+
+But it's not the end yet! Say, you want two different letters to be replaced by one: A=>E and U=>E. What do you do?
+
+Parentheses.
+
+A(U)EO#
+
+Using this string of rules, you get that both A and U are replaced by E, E turns into O and O stays. Tho ond roselt mest look liko this.
+
+Using parentheses gives you an option to put several letters in them, (EIOUY')A for example, allows you to replace every vowel (+ the apostrophe) with A. Thatas a vara stranga waa ta spaak, raght?
+
+But curly brackets allow you to do something else. They themselves are a circular group, which allows to make something like "branches" of rule strings.
+
+QWRTP{SDFGHJKL}ZXCVBNM
+
+Using this, P=>Z, and so does L=>Z, but S=>D. Azdo Ip'd doumfd bety dptamhe.
+And that's basically it for now.
+
+Those were the rules for replacement cryptolangs everyone! Oh, also: don't write the same letter twice in rule string, unless it has some diacritic, say, Â.
+About alteration cryptolangs.
+
+Those are more difficult to write down because they don't have clear cathegories. So what you will need to do is to write the rules down and explain them as plainly as possible, using those terms:
+
+    Initial: the initial letter of any word.
+    Final: the final letter of any word.
+    Consonant Cluster: a cluster of >1 consonants written together, for example, STR.
+    Vowel Cluster: a cluster of >1 vowels written together, for example, AE or EAU.
+    First: first occurence of some letter, say, consonant or vowel. Not the same as initial!
+    Last: last occurence of some letter, say, consonant or vowel. Not the same as final!
+    Twin-Letters: two same letters written together: EE, OO, TT, NN and so on. Might count as cluster or not, depends on rules of each individual cryptolang.
+    Replace: insertion of a Replacement Cryptolang rule string into some case. Used in Hybrid Cryptolangs in which both Alteration and Replacement occur.
+    Move: move a letter to another designated point.
+    Add: add a letter in an according place.
+    Erase/Delete: to delete some letter.
+    H-Digraphs: some of the most useful cathegories for consonant clusters, they are digraphs that are formed by addition of an H after the consonant. The list of such digraphs can vary, but usually, the ones most frequent in English are used.
+    Enhdigraph/to H-Digraph: to add an H after letters listed. Say, turn every C into Ch. Can be replaced by Replacement Cryptolant rule string with according settings.
+    V: vowel.
+    C: consonant.
+    Strings of vowels and consonants, say, VCV1, can be also changed into something, for example, CV=>CavV (the Javanais code).
+
+(end of first reddit post, beginning of second one:)
+
+    
+Erasing letters
+
+To erase specific units (reminder - "unit" means a part of the rulestring defined by a capital letter as its beginning, thus A, B, Eau, Th and anything starting with a capital letter is one), use /.
+
+In format, it looks like this:
+
+AE/
+
+Thus,
+
+Dancer → Dencr
+
+In the rulestring, the / is always followed by a space if there are more symbols following it.
+
+AE/ BCDFGH
+Two keys in one
+
+Let's say you want to put two stages of encoding into a cryptolang. Yes, you can manage to make a key out of two separate ones but sometimes that's too difficult.
+
+To add stages of encoding, use commas. It should look like this:
+
+(EIOUY')A, AaÁ#_AaaAä
+
+Meaning that in the first stage we turn all vowels into A, and in the second we clean the mess so there is no weird strings of A's everywhere. At maght lák rathar stranga, át baätafal at tha sama tama.
+Final, Initial, Medial and Isolated units
+
+For some time I had the concept of using different keys for different letter positions. Like Deites on the initial and then Atukyt on the final letter. Xeirt, U lnow.
+
+So let's say you want initial A to become Ae, while all other A's to become E. For this, we use numbers:
+
+1 - for Initial
+
+2 - for Final
+
+3 - for Medial
+
+4 - for Isolated (like "a" or "I")
+
+It is formatted like this:
+
+A1Ae#_(A2A3)EOUI_A4Los
+
+With the numeral after the unit. Which means yes, Th1 is a legitimate initial unit.
+
+So using the rulestring above, texts will look like this, with changes in bold:
+
+Eventuelly I meneged to figure out los way on how to construct aen incredible portel.
+
+​
+
+As well, you can use different keys for different units by position by formatting it like this:
+
+13=EAOU(I)Y_BDFGHCJKLMNPQWRSXZ_2=(BCDFGH)A(JKLMNPQR)O(STV)U(WXZ)Y_4=UIEram#_OEAArd
+
+Meaning Initial and Final units have EAOU(I)Y_BDFGHCJKLMNPQWRSXZ applied, Medials have (BCDFGH)A(JKLMNPQR)O(STV)U(WXZ)Y and Isolated have the UIEram#_OEAArd key.
+Unit type specification
+
+Let's say you want a kind of combination between units to be replaced with a specific other one. Say, (any consonant + A) becomes Ro. To indicate this, you need to use [Square Brackets] and this table below:
+
+C - Consonant
+
+V - Vowel
+
+Cc - Double Consonant
+
+Vv - Double Vowel
+
+Cx - Consonant cluster; You can add comparison signs like =, >, <, ≥ or ≤ combined with a number to specify the length of the cluster. Thus Cx>2 means "any consonant cluster longer than two letters". Same is applied to Vowel Clusters below.
+
+Vx - Vowel Cluster
+
+Ch - Digraph (consonantal if Vowel Digraphs are used too)
+
+Vh - Vowel Digraph (rare and only used in specific orthography systems, like the German "Ei" for the /eɪ/ diphtong)
+
+X - Any Singular Letter.
+
+Y - Semivowel (must be specified).
+
+N - Sonor (must be specified).
+
+L - Fluid (must be specified).
+
+Cb - Voiced Consonant
+
+Cp - Unvoiced Consonant
+Unit specification
+
+I had a problem with apostrophies - they do not have a capital form and thus can be confusing in keys. So to distinguish that in AE' A becomes E' and not A=>E=>, I decided to use \backslash framing\.
+
+This framing indicates that whatever symbols inside of it are are a singular unit no matter the capitalization or usage of operator symbols.
+
+So the little key above becomes A\E'\ and now is safe and sound from misunderstanding :D
+
+​
+    And that's it for today!
+
+Thus if you want the example above to work, you need this rulestring:
+
+[C]aRo
+
+Note that [C]a is a singular unit as "a" is not capital.
+
+As well you can go a little crazy with [CV]Za. Zazauza ezazatzang zall zaund zaza zazza.
+
+​
+
+Anyways I hope you are happy with the additions! By the time of making this post, r/cryptolangs has 15 members including me; And I am more than glad! I really hope to see more stuff flowing into this feed and surely different ideas being introduced from all of you! Peace and Jewi e podi upi!    
+
+
+******************************************************
+*****************Main Functions***********************
+******************************************************
+
+Most things work mostly as described by the reddit posts. 
+
+Namely, the following are implemented:
+Circular replacement via ABCDEF strings
+Multi-character replacement via AbCdEf strings
+Row replacement instead of circular via #'s
+Multiple rulestrings via _'s
+Multi-branch replacement via ()'s and {}'s
+Character deletion via "/"
+Multi-stage encoding via ", "
+Initial, Medial, Final, and Isolated units via 1,2,3,4 (Initial, final, medial, isolated)
+Unit-type specificaion via []'s
+And unit specification via \\'s
+
+Some of the replacement rules from the first post are not implemented, such as "move", but many are now well-described in the unit-type specification. 
+
+
+The top text field is the "ruleset field", the middle is the "plaintext" field, and the bottom is the "output" field. Putting a ruletext into the ruleset field, a block of words into the plaintext field, and hitting "translate" will apply the ruleset to the plaintext and display the result in the output field.
+
+A string of rules such as "ExAmPlE_RU, LE#_S(WIT{HNE}SeT)D_BLOCKS" will be split into stages of encoding:
+
+"ExAmPlE_RU" will swap "ex" in the plaintext with "am", am => pl => e => ex, and r=>u=>r
+
+LE#_S(WIT{HNE}SeT)D_BLOCKS will do the following: L => E, (SWITSeT) => D, H => N => E => Se, and B=>L=>O=>C=>K=>S=>B
+
+Note that this is actually an ill-defined ruleset, as within the same stage of encoding, L can be replaced with either E or O, S can be replaced with either B or D, and T is inside the ()'s twice, which will not produce unwanted behaviour, but isn't needed.
+
+The application will throw errors in the status bar relating to these problems, but it will still produce a result. It may not be the result you expect.
+
+The rulesset is relatively inflexible in what it can accept, so the status bar produces its input at each stage to help you figure out how to best modify your strings for desired results. 
+
+In general, for both the ruleset and plaintext, the program will only consider characters within the "Universe" sidebox, which you can freely type inside to expand your possible characters.
+However, some characters are reserved.
+
+The "save config file" and "load config file" will save and load the results of the ruletext box, and the entire sidebar respectively. 
+
+
+
+***************Reserved Characters*********************
+
+These characters can actually be used in some unintended places, such as plaintext, however, I cannot gaurantee the results will be expected.
+If you really wish to use them, it should be possible to properly escape them with some modification of the code. 
+
+() are reserved for describing "multi-replacement", or multiple letters being replaced by the same letter. This includes the character just before the brackets, and maps everything to the character after the brackets. 
+
+{} are reserved for describing "circular groups", or "branches". A{BC}D will produce A,C => D, B => C, D=>A
+
+[] are reserved for describing character sets, which are described in more detail in the next section
+
+# is reserved for describing "do not make this rule string circular", so LE# produces L => E, but not E => L.
+
+/ (forward slash) is reserved for deleting matches, "K/ " will delete K's. Nothing can map from a "/ ". 
+
+, is reserved for delimiting stages of encoding
+
+_ is reserved for delimiting different rulestrings within the same stage of encoding
+
+<> are reserved for describing multi-characters within the sidebars
+
+\ (backslash) is reserved for describing multi-characters within the ruletext
+
+*, +, ?, and ^ are not used by the application, but being reserved characters by RegEx, which is used extensively, they can cause problems.
+
+=, >, < are reserved for use within [] brackets.
+
+the digits 1-9 are reserved for use within [] brackets, and for determining position data
+
+******************************************************
+****************Using the Sidebar*********************
+******************************************************
+The sidebar defines the character sets used by [], (and the special group "dropped"), and with some modification, can be coerced into producing a lot of complex behaviour.
+
+The ruletext and plaintext will only check the characters described in the "Universe" text box. Any characters not in that text box will cause errors in the ruletext box, and will be left in place in the plaintext. Characters in other text boxes, but not in the universe box, will still cause errors in ruletext and be left in place in plaintext. (Excepting the dropped box, which is special) 
+
+If you want to have a character that consists of more than one character in any of the sidebars, use <> brackets. So <Qr> would be treated as one unit. This does not mean that examples of QR in your plaintext won't be matched by Q matches and by R matches, so if that is undesirable behaviour, you need to delete "Q" and "R" from your universe text after adding <Qr>. 
+
+Internally, the characters inside <> brackets are made into () groups in the RegEx strings beneath the code. 
+
+The other sidebars have no inherent meaning. If you would like to use [Cm] to refer to the vowels, you can paste your list of rules into the "Complexes" textbox. 
+
+The insides of a [] are always read as one unit, possibly including any lowercase letters afterwards. For example, [CCmVVC]m is interpreted as "A consonant, a complex, two vowels, a consonant, and an m" and is a single unit. 
+Conversely, separate square brackets are always read as belonging to separate units. [C][V]m is interpreted as \[C]\\[V]m\, or "replace any consonant by some random vowel and an m". 
+
+If you need brackets on either side of non-brackets, such as [C]o[C], (matching "mom", "pop", etc.), you need to use backslashes to enforce it as a single unit, \[C]o[C]\.
+
+The program does not have any syllable-checking or any sound-based capabilities whatsoever, so if you wish to replace "ng" only when it represents one sound, you have two options. 
+Option 1: separate all ng's in the text that are not digraphs with backticks, "an`gle". 
+Option 2: taking "th" as an example: remove digraph "th"s from your plaintext and replace them with other symbols. So I could have "þ" and "ð" representing the two types of "th" sounds in english, and where "th" is not a digraph, (such as "outhouse"), it is simply left alone. 
+
+You may also wish to only operate on some characters in some sound circumstances. For example, if you wished to modify "C" to an "L" only when it is pronounced like an "S", you could delete C from the universe text and replace it with <C|s> and <C|k>, which would treat "C|s" and "C|k" as single units, and then make your rule as "\C|s\L#"
+
+This is where "dropped" comes in. Any character in the "dropped" box will be removed from the ciphertext before outputting to the screen. So if you have unmodified "C|s"'s left around, it can save you the trouble of deleting the "|s"'s if you put "<|s>" in the "dropped" box. 
+
+Square brackets also have a modifier to make it easy to match multiples of the same type. A lowercase "x" inside square brackets, followed by a "=", ">" or "<" and then a number will match exactly, less than, or more than the number of letters of the type previously specified. so [CVx=2] will match "one consonant followed by any two vowels", and [Cx<3V] will match "Either one or two consonants followed by a vowel". 
+
+Consonants and Vowels have an add'l shortcut feature: [Cc] will match two of the same consonant, and [Vv] will match 2 of the same vowel.
+If you wish to do the same thing for other character sets, or for indeterminate number of repetitions, then "s" followed by an "x" code, such as "x=3" will do that. So [Cmsx<5] will match "the same complex upto 4 times in a row". 
+
+Square brackets are also extended in this application from the original app: you can write to square brackets as well. When a replacement calls for replacing into a square bracket, it selects random characters from the character set. so A[C]# would replace all a's with random consonants. A[Cx=3]# would replace A's with three random consonants, A[Csx>2]# would replace A's with between 3 and 11 of the same random consonant, (the general formula is 2x + 5), and A[Cx<3]# would replace every A with either 1 or 2 random consonants. 
+
+Nothing special needs to be done to use the user-defined boxes. Technically, if you don't care about using sonorants, or any character set, you can simply delete the default text there and replace it with whatever you like, using [N] to summon that character set, using it as a user-defined set. The user-defined boxes are simply left undefined by default to give you more character sets to play with. 
+
+***********List of Square Bracket Codes***************
+[C]  : entries from the "consonant" box
+[Cc] : two of the same consonant
+[Ch] : entries from the "consonant digraph" box
+[Cm] : entries from the "complexes" box
+[Cn] : entries from the "non-sonorant" box
+[N]  : entries from the "sonorant" box
+[V]  : Entries from the "vowel" box
+[Vh] : Entries from the "vowel digraphs" box
+[Vv] : two of the same vowel
+[X]  : entries from the "universe" box.
+[Y]  : entries from the "semivowel" box
+[Ua] : entries from the "user defined 1" box
+[Ub] : entries from the "user defined 2" box
+[Uc] : entries from the "user defined 3" box
+
+x>,x<,x= :match more than, less than, or equal to the following number
+s followed by an x code: make the matches all the same character, not just from the same character set
+
+
+******************Diacritics**************************
+
+By default, characters with diacritics are treated as separate characters. "ç" is not treated as "c", but as a separate character that will be matched separtely. In fact, if you do not add ç to the universe, the program will simpky skip over it, both in the ruletext and in the plaintext. 
+
+This means that when the mode is set to the default, "Treat Diacritics as Separate characters", if you want to keep some diacritics and modify others, you can simply not enter some diacritics in the universe.
+If you want to skip diacritics, simply do not enter any into the universe box.
+
+The second mode strips all diacritics from the plaintext before translating. This mode does not care if the combined character is in the universe sidebar, as it will strip all diacritics from all characters before beginning translation. 
+
+The third mode, "transfer diacritics", works a lot like the way capital letters are shifted. It will strip each character of diacritics in the plaintext, as in the second mode, apply the replacement rules, then read through the original plaintext, and apply diacritics in sequence to the replacement text. If the match is longer than the replacement, (such as Act => Be, and the plain text contains "açt"), then the first letter's diacritics, (all none of them), will be applied to the first letter, the second letter's diacritics, (","), to the second, and then the last letter in our example does not have a counterpart and will not give any diacritics. So it will output "bȩ". If our replacement text was longer, than after the characters of the matching text are scanned, no diacritics will be applied to the matching text. 
+
+And, in transfer diacritics mode, any character in the replacement part of a rule will maintain those diacritics. So Act => Bé, with an açt in the text, will produce "Bȩ̀ ". If you play around with that string, you will notice that ȩ̀  is a single character, despite the spacing. The spacing/incorrect rendering is a result of using unicode "combining characters" that do not result in a known unicode character. So be awary of that possible type of result.
+
+
+
+
+******************************************************
+****The status window and debugging your ruletext*****
+******************************************************
+
+The status window is emptied whenever you click the "Translate" button, and is populated by various error messages and status messages through the encoding process. 
+If your code does not produce the desired result, your first option should be to go through and see if there are any thrown errors.
+
+If that fails, you may have to examine the other messages it gives you. 
+
+The application parses the ruleslist on a number of passes. 
+
+First it goes through a "lexer" which reduces unit to a single token, which are stored in arrays that represent rulestrings, within arrays that represent rulesets. AB{CD}E is turned into [[[A,B,{,C,D,},E]]] for example. 
+
+Then it goes through a parser, which is responsible for collecting () and {} bracket groups, and making them into single entries. Our example above becomes [[[A,B,[{,[C,D],E]]], and notice that {,C,D,} has now become [{,[C,D]], which is a single entry in the array. This parser works recursively, and so can find brackets within brackets. 
+
+The parser also turns any square brackets into RegEx strings representing the character sets.
+
+Then it goes through an interpreter, which turns the parser's output into sets of rules. It returns an array of rulesets that contain an array of rules, each. [[[A,B,[{,[C,D],E]]] becomes [[A,B], [B,E], [C,D], [D,E],[E,A]], where the first entry in each array is the character to search for, and the second character is what to replace it with. 
+
+Then it goes through a sorting algorithm, which finds the length of the first entry of each array, and adds it as a 3rd element, and then sorts each ruleset by that length in descending order, keeping same-length rules in the same order. So [[A,B], [B,E], [C,D], [D,E],[E,A]] becomes [[A,B,1], [B,E,1], [C,D,1], [D,E,1],[E,A,1]]
+
+And these are also the regular status messages that will be returned by the status window. So you can look at the final result to see if it contains a [AA,AA,00] rule that describes what you intend, and if you do not find it, you can work backwards until you find where the ruleset diverged from your intentions. Then you can either fix your ruleset, or (hopefully not) fix my code.
+
+
+With this ruletext finally interpreted, the applications attempts to match any of the rules at position 1 of the plaintext. If it fails to find a match, it increments to position 2. If it finds a match, it adds the length of the matched text to the position and checks from that position. 
+
+******************************************************
+***************The Generate Button********************
+******************************************************
+
+The Generate button, instead of translating plaintext, generates 100 words of a given pattern. It does this by exploiting the "write random stuff for square brackets" function of the translate function. 
+
+In order to use this, simply type in a pattern, formatted as a single rulestring. Plain characters will return themselves. So if I wanted three letter words that started and ended with a consonant, with i in the middle, I would use the ruletext: "[C]I[C]", which will produce results such as "ciz ziz hib nil jir wic tif gih"
+
+And then hit the "Generate" button.
+
+A rulestring such as "Zip" will only produce the word "zip"; Without square brackets somewhere in the rulestring, there is no randomization to perform.
+
+
+
+
+
+******************************************************
+********************Changelog*************************
+******************************************************
+
+***********************V1.2.3.1***********************
+
+-transferring diacritics fixed (towrite is now a string instead of a list and does not support "towrite[i] = ...")
+
+
+***********************V1.2.3*************************
+
+-Changed how characters are interpreted in fields and by the lexer so that <sh> type multi-characters are supported in the universe box without their separate components. As a consequence, when neither "s" or "h" are present in the universe box, (the "All Valid Characters" box), but <sh> is, sH and sh will be treated identically for all purposes, as well Sh and SH. In general, only the capitalization of the first letter of a multi-character string matters for the point of lexing matches. 
+
+-Fixed the sorter length counting; have yet to properly implement square bracket character count estimation
+
+-Statusqueue is now printed again after enciphering
+
+-Infinite loop detectors have been increased to "1,000,000" loops. 
+
+-A problem with the change tracker seems to have corrected itself
+
+-Suspected bug introduced: how the heck does the lexer treat characters with no upper/lower case forms? 
+
+
+***********************V1.2.2*************************
+
+-Re-implemented positioning
+
+-Moved square bracket interpretation into the runtime instead of the rules. 
+
+-Square bracket sorting is currently broken on purpose; I need to reimplement length checking there
+
+-Square brackets have been completely reimplemented. There may be new bugs.
+
+-Changed deletion to now only require a forward slash, to match changes in the CDS
+
+
+***********************V1.2.1*************************
+
+(several non-working versions skipped)
+
+-Rewrote a great deal of code to be better structured. Lexer now actually explicitly tokenizes
+
+-Broke some functionality, like positions and stuff
+
+-Fixed a lot of bugs between combinations of features. Not even sure how many I fixed. 
+
+-Huge changes, difficult to document all the fixes
+
+
+
+***********************V1.1***************************
+
+-Blank blocks, for example those caused by a trailing "_" or a "__" anywhere in the ruleset, are now discarded instead of making the parser error-out.
+
+-Fixed parser error-handling, and clarified status code
+
+-The "dropped" character sidebar is now saved & loaded as well
+
+-Changed generator input to no longer require adding stuff before and after your desired sequence
+
+-Sonorants sidebar is now labelled
+
+-Implemented radio buttons for deciding how to display changed text
+
+-Translated text now intelligently places capitals where the plaintext had capitals, as long as capitals don't indicate changed text
+
+-Implemented radio buttons that control how diacritics are handled, and implemented all three modes
+
+-Either uppercase or lowercase characters in the sidebar will now let both the upper and lower case characters match. 
+
+-# can now be used without a following _
+
+
+
+
+
